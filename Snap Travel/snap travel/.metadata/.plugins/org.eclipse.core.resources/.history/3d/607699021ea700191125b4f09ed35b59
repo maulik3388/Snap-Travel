@@ -1,0 +1,84 @@
+package pages;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import extentReport.ExtentTestManager;
+import com.relevantcodes.extentreports.LogStatus;
+
+public class BasePage {
+    public WebDriver driver;
+    public WebDriverWait wait;
+
+   
+    public BasePage (WebDriver driver){
+    	driver.manage().timeouts().implicitlyWait(25000, TimeUnit.MILLISECONDS);
+        this.driver = driver;
+        wait = new WebDriverWait(driver,25);
+    }
+
+    
+    public WebElement waitVisibility(By elementBy) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
+    }
+
+    
+    public void click (By elementBy) {
+    	JavascriptExecutor jse = (JavascriptExecutor)driver;
+		WebElement element = driver.findElement(elementBy);
+		waitVisibility(elementBy);
+		jse.executeScript("arguments[0].click();", element);
+        
+    }
+
+    
+    public void writeText (By elementBy, String text) {
+    	WebElement element=waitVisibility(elementBy);
+    	element.sendKeys(Keys.CONTROL + "a");
+    	element.sendKeys(Keys.DELETE);
+        element.sendKeys(text);
+    }
+    
+    public void select(By elementBy, String text) {
+    	WebElement element = driver.findElement(elementBy);
+        Select select = new Select(element);
+        select.selectByVisibleText(text);
+    }
+    
+    public boolean checkIfClickable(By elementBy) {
+    	waitVisibility(elementBy);
+    	 boolean temp = driver.findElement(elementBy).isDisplayed();
+    	 return temp;
+    }
+    
+    public void clicked(By elementBy) {
+    	/*boolean temp1= checkIfClickable(elementBy);
+        System.out.println(temp1);*/
+       // wait.until(ExpectedConditions.elementToBeClickable(elementBy));
+    	waitVisibility(elementBy).click();
+    	
+    }
+    
+    public void getNewWindowDriver() {
+    	for(String winHandle : driver.getWindowHandles()){
+    	    driver.switchTo().window(winHandle);
+    	}
+    }
+    
+    public void switchToFrame(By elementBy){
+    	driver.switchTo().frame(waitVisibility(elementBy));
+    }
+    
+    public void switchToDefaultContent(){
+    	driver.switchTo().defaultContent();
+    }
+}

@@ -1,0 +1,23 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class SecondPage extends BasePage{
+
+    public SecondPage(WebDriver driver) {
+        super(driver);
+    }
+
+    By passwordBy = By.name("password");
+    By nextToLogin = By.xpath("//span[@class='CwaK9']");
+   
+
+    public SecondPage loginTogmail (String password){
+        
+        writeText(passwordBy, password);
+        click(nextToLogin);
+        return this;
+    }
+
+}

@@ -1,0 +1,21 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class SelectHotelPage extends BasePage{
+
+    public SelectHotelPage(WebDriver driver) {
+        super(driver);
+    }
+
+    By hotelBy = By.xpath("//div[@class='src-list_view-FiltersContainer-SortByFilterView-___SortByFilterView__sort-by-card___1EsmO src-list_view-FiltersContainer-SortByFilterView-___SortByFilterView__desktop___1RMUF']/following-sibling::div/div/div/div/div[2]/span");
+      
+
+    public SelectHotelPage goToLocation (){
+        
+        click(hotelBy);
+        return this;
+    }
+
+}

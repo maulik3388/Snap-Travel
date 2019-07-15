@@ -1,0 +1,36 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import com.relevantcodes.extentreports.LogStatus;
+import extentReport.ExtentTestManager;
+
+public class HomePage extends BasePage {
+
+    
+    public HomePage (WebDriver driver) {
+        super(driver);
+    }
+
+    String baseURL = "https://staging.snaptravel.com/search?encrypted_user_id=BZ18EE-j_XQAPEzGzj91cQ";
+
+    By searchLasVegas = By.xpath("//input[@class='omnisearch__input outlined']");
+    By locationSearch = By.xpath("//a[@class='ui fluid big button search-container__action-btn']");
+
+
+    public HomePage goToSearchPage (){
+    	ExtentTestManager.getTest().log(LogStatus.INFO, "Navigate to Search Page");
+       
+    	driver.get(baseURL);
+        return this;
+    }
+
+    public SelectHotelPage goToLocation (String location){
+    	ExtentTestManager.getTest().log(LogStatus.INFO, "Navigate to Las Vegas Hotel Page");
+
+    	writeText(searchLasVegas,location);
+        click(locationSearch);
+        return new SelectHotelPage(driver);
+    }
+
+}

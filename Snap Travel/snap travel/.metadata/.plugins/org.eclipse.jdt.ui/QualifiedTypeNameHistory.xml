@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.support.ui.ExpectedCondition"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.Keys"/>
+<fullyQualifiedTypeName name="extentReport.ExtentManager"/>
+<fullyQualifiedTypeName name="tests.BaseTest"/>
+<fullyQualifiedTypeName name="extentReport.ExtentTestManager"/>
+</qualifiedTypeNameHistroy>

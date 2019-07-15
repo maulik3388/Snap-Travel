@@ -1,0 +1,24 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class SelectHotelPage extends BasePage{
+
+    public SelectHotelPage(WebDriver driver) {
+        super(driver);
+    }
+
+    By hotelBy = By.xpath("//div[contains(text(),'View Details')]");
+   // By hotelBy = By.linkText("View Details");
+      
+
+    public HotelDetailPage goToHotel (){
+       boolean temp1= checkIfClickable(hotelBy);
+       System.out.println(temp1);
+        click(hotelBy);
+      //  getNewWindowDriver();
+        return new HotelDetailPage(driver);
+    }
+
+}

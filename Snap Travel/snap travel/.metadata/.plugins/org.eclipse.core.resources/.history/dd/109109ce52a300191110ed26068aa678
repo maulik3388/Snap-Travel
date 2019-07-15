@@ -1,0 +1,30 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class HomePage extends BasePage {
+
+    
+    public HomePage (WebDriver driver) {
+        super(driver);
+    }
+
+    String baseURL = "(https://staging.snaptravel.com/search?encrypted_user_id=BZ18EE-j_XQAPEzGzj91cQ";
+
+    By searchLasVegas = By.className("jss48 jss33 jss49 jss34");
+    By nextToPassword = By.xpath("//span[@class='CwaK9']");
+
+
+    public HomePage goToSearchPage (){
+        driver.get(baseURL);
+        return this;
+    }
+
+    public PasswordPage goToPasswordPage (String username){
+    	writeText(userId,username);
+        click(nextToPassword);
+        return new PasswordPage(driver);
+    }
+
+}

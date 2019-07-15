@@ -1,0 +1,23 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class SelectHotelPage extends BasePage{
+
+    public SelectHotelPage(WebDriver driver) {
+        super(driver);
+    }
+
+    By hotelBy = By.xpath("//span[contains(text(),'Excalibur Hotel & Casino')]");
+   // By hotelBy = By.linkText("View Details");
+      
+
+    public HotelDetailPage goToHotel (){
+        
+        click(hotelBy);
+      //  getNewWindowDriver();
+        return new HotelDetailPage(driver);
+    }
+
+}

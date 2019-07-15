@@ -1,0 +1,22 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class SelectHotelPage extends BasePage{
+
+    public SelectHotelPage(WebDriver driver) {
+        super(driver);
+    }
+
+    By hotelBy = By.className("src-components-styles-___button_component__btn___3mUFc src-components-styles-___button_component__primary___U4mRf");
+      
+
+    public HotelDetailPage goToHotel (){
+        
+        click(hotelBy);
+      //  getNewWindowDriver();
+        return new HotelDetailPage(driver);
+    }
+
+}

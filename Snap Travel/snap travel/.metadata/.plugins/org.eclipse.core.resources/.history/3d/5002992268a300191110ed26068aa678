@@ -1,0 +1,28 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class HotelDetailPage extends BasePage{
+	
+	public HotelDetailPage(WebDriver driver) {
+		super(driver);
+	}
+	
+	
+
+
+    By selectRoom = By.xpath("//div[@class='src-hotel_cards-ComparisonHeader-___ComparisonHeader__button___2gwDL']");
+    By roomType = By.xpath("//div[@class='src-hotel_cards-RatesContainerDesktop-___RatesContainerDesktop__header___1fIRn']/following-sibling::div//div[@class='test-button src-components-hotels_components-styles-___hotel_card_button_desktop__color_green___BiBud src-components-hotels_components-styles-___hotel_card_button_desktop__button___tNkRU']");
+
+    public void selectRoomType() {
+    	
+    	click(selectRoom);
+    	
+    }
+    
+    public CustomerDetailPage goToCustDetail() {
+    	
+    	click(roomType);
+    }
+}

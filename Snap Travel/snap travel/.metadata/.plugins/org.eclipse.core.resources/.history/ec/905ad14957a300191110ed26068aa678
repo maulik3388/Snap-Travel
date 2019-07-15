@@ -1,0 +1,22 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class SelectHotelPage extends BasePage{
+
+    public SelectHotelPage(WebDriver driver) {
+        super(driver);
+    }
+
+    By locationBy = By.name("password");
+      
+
+    public SelectHotelPage goToLocation (String location){
+        
+        writeText(locationBy, location);
+       // click(nextToLogin);
+        return this;
+    }
+
+}

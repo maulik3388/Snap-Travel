@@ -1,0 +1,48 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class BasePage {
+    public WebDriver driver;
+    public WebDriverWait wait;
+
+   
+    public BasePage (WebDriver driver){
+        this.driver = driver;
+        wait = new WebDriverWait(driver,10);
+    }
+
+    
+    public WebElement waitVisibility(By elementBy) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
+    }
+
+    
+    public void click (By elementBy) {
+    	JavascriptExecutor jse = (JavascriptExecutor)driver;
+		WebElement element = driver.findElement(elementBy);
+		waitVisibility(elementBy);
+		jse.executeScript("arguments[0].click();", element);
+        
+    }
+
+    
+    public void writeText (By elementBy, String text) {
+        waitVisibility(elementBy).clear();
+        driver.findElement(elementBy).sendKeys(text);
+    }
+    
+    public void select(By elementBy, String text) {
+    	WebElement element = driver.findElement(elementBy);
+        Select select = new Select(element);
+        select.selectByVisibleText(text);
+    }
+
+    
+}

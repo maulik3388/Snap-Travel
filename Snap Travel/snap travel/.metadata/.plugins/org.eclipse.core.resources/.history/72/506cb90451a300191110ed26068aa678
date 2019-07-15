@@ -1,0 +1,23 @@
+package tests;
+
+
+import org.testng.annotations.Test;
+import pages.UserIdPage;
+import pages.PasswordPage;
+
+public class hotelBookingTest extends BaseTest {
+    @Test (description="End to End Test")
+    public void e2ETest () {
+
+        UserIdPage UserIdPage = new UserIdPage(driver);
+        PasswordPage PasswordPage;
+
+        UserIdPage.goToSignIn();
+        
+        PasswordPage = UserIdPage.goToPasswordPage("versapay.qa.test@gmail.com");
+        PasswordPage.loginTogmail("iLoveApples");
+        
+    }
+
+
+}

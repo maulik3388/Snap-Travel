@@ -1,0 +1,33 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import com.relevantcodes.extentreports.LogStatus;
+
+import extentReport.ExtentTestManager;
+
+public class HotelDetailPage extends BasePage{
+	
+	public HotelDetailPage(WebDriver driver) {
+		super(driver);
+	}
+	
+    By selectRoomBy = By.xpath("//div[@id='info']/following-sibling::div/div/div[3]");
+    By roomTypeBy = By.xpath("//div[@id='rooms']/div[2]/div/div[2]/div/div[3]/div");
+
+    public HotelDetailPage selectRoomType() {
+    	ExtentTestManager.getTest().log(LogStatus.INFO, "Select Room Type");
+  
+    	clicked(selectRoomBy);
+    	return this;
+    	
+    }
+    
+    public CustomerDetailPage goToCustDetail() {
+    	ExtentTestManager.getTest().log(LogStatus.INFO, "Navigate to Customer Detail Page");
+    	
+    	clicked(roomTypeBy);
+    	return new CustomerDetailPage(driver);
+    }
+}

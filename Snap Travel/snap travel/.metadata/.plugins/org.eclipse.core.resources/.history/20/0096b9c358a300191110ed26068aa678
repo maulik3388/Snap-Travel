@@ -1,0 +1,27 @@
+package tests;
+
+
+import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.SelectHotelPage;
+
+public class hotelBookingTest extends BaseTest {
+    @Test (description="End to End Test")
+    public void e2ETest () {
+
+    	HomePage homePage = new HomePage(driver);
+        SelectHotelPage selectHotelPage;
+        TypeOfRoomPage typeOfRoomPage;
+        FourthPage fourthPage;
+
+        homePage.goToSearchPage();
+        
+        selectHotelPage = homePage.goToLocation("Las Vegas");
+        typeOfRoomPage = selectHotelPage.goToHotel();
+        
+     
+        
+    }
+
+
+}

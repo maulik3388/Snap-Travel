@@ -1,0 +1,14 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class TypeOfRoomPage extends BasePage{
+	
+	public TypeOfRoomPage(WebDriver driver) {
+        super(driver);
+    }
+
+    By hotelBy = By.name("password");
+
+}

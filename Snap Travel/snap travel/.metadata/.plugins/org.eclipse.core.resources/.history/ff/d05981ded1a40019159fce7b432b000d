@@ -1,0 +1,76 @@
+package pages;
+
+import java.math.BigInteger;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class CustomerDetailPage extends BasePage{
+	
+	public CustomerDetailPage(WebDriver driver) {
+		super(driver);
+	}
+	
+	
+	
+	By firstNameBy = By.id("first-name");
+	By lastNameBy = By.id("last-name");
+	By emailBy = By.id("email");
+	By phoneNumBy = By.id("phone-number");
+	By paymentDetailby = By.id("btn-next-to-payment");
+	By paymentCardBy = By.xpath("//input[@id='pan']"); 
+	By ExpDateBy = By.xpath("//input[@class='src-booking_form-components-input-___input__reset-input___3a7nY']");
+	By cVVBy = By.id("cvv");
+	By nameOnCardBy = By.id("billing-name");
+	By addressBy = By.id("billing-address");
+	By cityBy = By.id("city");
+	By zipCodeBy = By.id("billing postal-code");
+	By provinceBy = By.xpath("//select[@name='state']");
+	By countryBy = By.xpath("//select[@name='country-name']");
+	
+	String firstName = "Mark";
+	String lastName = "Wheeler";
+	String emailId = "test@snaptravel.com";
+	String phoneNum = "1234567890";
+	//String cardNum = "4111111111111111";
+	BigInteger cardNum = new BigInteger("4111111111111111");
+	String expDate = "1020";
+	String cvv = "123";
+	String nameOnCard = "Mark Wheeler";
+	String address = "xyz";
+	String city = "Seattle";
+	String province = "Washington";
+	String country = "United States";
+	String zipCode = "12345"; 
+	
+	public void enterPersonalDetail() {
+		
+		writeText(firstNameBy,firstName);
+		writeText(lastNameBy,lastName);
+		writeText(emailBy,emailId);
+		writeText(phoneNumBy,phoneNum);
+		click(paymentDetailby);
+		
+		
+	}
+	
+	public void enterPaymentDetail() {
+		
+		driver.switchTo().frame(1);
+		writeText(paymentCardBy,nameOnCard);
+		writeText(ExpDateBy,expDate);
+		writeText(cVVBy,cvv);
+		writeText(nameOnCardBy,nameOnCard);
+		writeText(addressBy,address);
+		writeText(cityBy,city);
+		select(provinceBy,province);
+		select(countryBy,country);
+		writeText(zipCodeBy,zipCode);
+			
+	}
+	
+	
+	
+	
+
+}
